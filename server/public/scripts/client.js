@@ -1,22 +1,43 @@
 
 console.log("working");
 
-
-let calculation = [];
+// history of past calculations
+let history = [];
 let total = 0;
 let firstNumber =0
 
 function submitTable(event){
     console.log('submitTable');
     event.preventDefault();
+   
 };
 
-let firstNumberVal = document.querySelector('#First Number').value;
-console.log(firstNumberVal);
+function symbol (event){
+console.log(event.target.value)
 
-let secondNumberVal = document.querySelector('#Second Number').value;
-console.log(secondNumberVal);
+// }
+//  // object for server 
+//     let calculation = {
+//         firstNumber : addFirstNumber,
+//         symbol : addSymbol,
+//         secondNumber :addSecondNumber
+//         // firstNumber,symbol,secondNumber 
 
+ }
+
+
+
+// let firstNumberVal = document.querySelector('#First Number').value += ''
+// console.log(firstNumberVal);
+
+// let secondNumberVal = document.querySelector('#Second Number').value;
+// console.log(secondNumberVal);
+
+// let clearButtonVal = document.querySelector('#clearButton').value;
+// console.log(clearButtonVal);
+
+// let additionVal = document.querySelector('#addition').value;
+// console.log(additionVal);
 // function getJokes() {
 //     axios.get('/jokes').then((response) => {
 //         console.log(response);
@@ -33,3 +54,7 @@ console.log(secondNumberVal);
 //             `;
 //         }
 //     };
+    //         let resetButton = document.querySelector('#reset')
+    //         resetButton.innerHTML = `
+    //         <button onClick= "nextRound()">Reset 1 - 25</button>
+    //         `;
