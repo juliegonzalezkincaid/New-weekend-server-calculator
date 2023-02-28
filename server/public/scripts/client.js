@@ -4,11 +4,18 @@ console.log("working");
 
 let calculation = [];
 let total = 0;
+let firstNumber =0
 
-function submitForm(event){
-    console.log('submitForm');
+function submitTable(event){
+    console.log('submitTable');
     event.preventDefault();
 };
+
+let firstNumberVal = document.querySelector('#First Number').value;
+console.log(firstNumberVal);
+
+let secondNumberVal = document.querySelector('#Second Number').value;
+console.log(secondNumberVal);
 
 // function getJokes() {
 //     axios.get('/jokes').then((response) => {

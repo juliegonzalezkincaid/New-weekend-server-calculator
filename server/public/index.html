@@ -4,42 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HTML Forms & Tables</title>
+    <title>Server Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 
 <body>
-<table class= "calculator">
-    <tr>
+    <header>
+        <h1>Server Calculator</h1>
+    </header>
+<table class= "calculator" onSubmit="submitTable(event)"onSubmit="">
+   
+     <tr>    
         <td>
-            <td>
-            
                 <input id ="firstNumberIn" type="number" placeholder="First Number" >
             <button onClick="symbol(event)" id="addition">+</button>
             <button onClick="symbol(event)" id="subtraction">-</button>
             <button onClick="symbol(event)" id="division">/</button>
             <button onClick="symbol(event)" id="multiplication">*</button>
             <button onClick="symbol(event)" id="decimile">.</button>
-                <input id="secondNumberIn" type= "number" placeholder="SecondInput"></input>
+                <input id="secondNumberIn" type= "number" placeholder="Second Number"></input>
             <button onClick="answer(event)" id="equals" type="number">=</button>
-            <button onClick="removeAll(event)" id="clearButton" type="submit" >C</button>
+            <button onClick="clearAll(event)" id="clearButton" type="submit" >C</button>
         </td>
     </tr>
 </table>
 <div id='outputDiv'></div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
