@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML Forms & Tables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> -->
+</head>
+
+<body>
+<table class= "calculator">
+    <tr>
+        <td>
+            <td>
+            
+                <input id ="firstNumberIn" type="number" placeholder="First Number" >
+            <button onClick="symbol(event)" id="addition">+</button>
+            <button onClick="symbol(event)" id="subtraction">-</button>
+            <button onClick="symbol(event)" id="division">/</button>
+            <button onClick="symbol(event)" id="multiplication">*</button>
+            <button onClick="symbol(event)" id="decimile">.</button>
+                <input id="secondNumberIn" type= "number" placeholder="SecondInput"></input>
+            <button onClick="answer(event)" id="equals" type="number">=</button>
+            <button onClick="removeAll(event)" id="clearButton" type="submit" >C</button>
+        </td>
+    </tr>
+</table>
+<div id='outputDiv'></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+  </body>
+</html>
+
+
+
