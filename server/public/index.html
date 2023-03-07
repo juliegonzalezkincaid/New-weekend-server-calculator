@@ -13,18 +13,20 @@
     <header>
         <h1>Server Calculator</h1>
     </header>
-<form id= "inputDiv" class= "calculator" onSubmit="submitTable(event)"onSubmit="">
+    <div id="inputs"></div>
+<form id="calculator" onSubmit="calculate(event)">
        
-       
-                <input id ="firstNumberIn" type="number" placeholder="First Number" >
+        
+                <input id ="firstNumberIn" type="number" placeholder="First Number" />
             <button  onClick="symbol(event)" id="addition" value="+" type="button">+</button>
             <button onClick="symbol(event)" id="subtraction" value="-" type="button">-</button>
             <button onClick="symbol(event)" id="division" value=" /" type="button">/</button>
             <button onClick="symbol(event)" id="multiplication" value="*" type="button" >*</button>
             <button onClick="symbol(event)" id="decimile" value="." type="button">.</button>
-                <input id="secondNumberIn" type= "number" placeholder="Second Number"></input>
-            <input  onClick="answer(event)" id="equals" type="submit"/>
-            <button onClick="clearAll(event)" id="clearButton" type="button">C</button>
+                <input id="secondNumberIn" type= "number" placeholder="Second Number"/>
+
+            <input onClick="equals(event)" id="equals" type="submit"/>
+            <button onClick="clearAll(event)" id="clearBtn" type="button">C</button>
            <!-- strech goal-->
             <!-- <button  onClick="symbol(event)" id="zero" value="0">0</button>
             <button  onClick="symbol(event)" id="one" value="1">1</button>
@@ -35,18 +37,24 @@
             <button  onClick="symbol(event)" id="six" value="6">6</button>
             <button  onClick="symbol(event)" id="seven" value="7">7</button>
             <button  onClick="symbol(event)" id="eight" value="8">8</button>
-            <button  onClick="symbol(event)" id="nine" value="9">9</button> -->
+            <button  onClick="symbol(event)" id="nine" value="9">9</button> 
+        forms need a type= button-->
+    
+</form>
+      
+<h2>View Calculation</h2>
+  
+ <div id= "viewCalculationDiv"> </div>
 
-       
-  </form>
+<h2>History</h2>
+ <div id=" historyDiv"> </div>
 
-<div id='outputDiv'></div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
   </body>
 </html>
-
 
 
