@@ -27,36 +27,35 @@ app.get('/inputs',(req, res) =>{
 
 
 
-app.get('/view', (req,res) => {
-  console.log('GET Request made for /view');
-  console.log(req.body);
-  res.send({view});
-});
+// app.get('/view', (req,res) => {
+//   console.log('GET Request made for /view');
+//   console.log(req.body);
+//   res.send({view});
+// });
 
 app.post('/inputs', (req, res) => {
   console.log('POST Request made for /inputs');
   console.log(req.body);
   let inputNew= req.body;
-  let firstNum = Number(inputNew.firstNumberIn);
-  let secNum = Number(inputNew.secondNumberIn)  
-  let symbol = inputNew.operator
+  let firstNum = Number(inputNew.firstNumber);
+  let secNum = Number(inputNew.secondNumber)  
+  let symbol = inputNew.symbol
 
-  const calculate = (n1, operator, n2) => {
-    let result = ''
-    
-    if (operator === 'add') {
-      result = n1 + n2
-    } else if (operator === 'subtract') {
-      result = n1 - n2
-    } else if (operator === 'multiply') {
-      result = n1 * n2
-    } else if (operator === 'divide') {
-      result = n1 / n2
-    }
-    
-    return result
+  let result = ''
+  
+  if (symbol === '+') {
+    result = firstNum + secNum
+  } else if (symbol === '-') {
+    result = firstNum - secNum
+  } else if (symbol=== '*') {
+    result = firstNum * secNum
+  } else if (symbol === '/') {
+    result = firstNum / secNum
   }
-  inputs.push(inputs);
+  // Store the results as a property of newInput
+  inputNew.answer = result;
+  inputsArray.push(inputNew);
+  console.log(inputsArray);
   res.sendStatus(201);//Sucess!!
 });
 //   function get calculation() {

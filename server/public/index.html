@@ -13,19 +13,19 @@
     <header>
         <h1>Server Calculator</h1>
     </header>
-    <div id="inputs">
+    
 <form id="calculator" onSubmit="calculate(event)">
        
-        
-                <input id ="firstNumberIn" type="number" placeholder="First Number" />
+        <div id="inputs">
+                <input id ="firstNumberIn" type="number" />
             <button  onClick="symbol(event)" id="addition" value="+" type="button">+</button>
             <button onClick="symbol(event)" id="subtraction" value="-" type="button">-</button>
-            <button onClick="symbol(event)" id="division" value=" /" type="button">/</button>
+            <button onClick="symbol(event)" id="division" value="/" type="button">/</button>
             <button onClick="symbol(event)" id="multiplication" value="*" type="button" >*</button>
             <button onClick="symbol(event)" id="decimile" value="." type="button">.</button>
-                <input id="secondNumberIn" type= "number" placeholder="Second Number"/>
+                <input id="secondNumberIn" type= "number"/>
 
-            <input onClick="equals(event)" id="equals" type="submit"/>
+            <input id="equals" type="submit"/>
             <button onClick="clearAll(event)" id="clearBtn" type="button">C</button>
            <!-- strech goal-->
             <!-- <button  onClick="symbol(event)" id="zero" value="0">0</button>

@@ -21,7 +21,7 @@ operator= event.target.value
 
 
 
-
+getInputs();
 
 function getInputs(){
     axios.get('/inputs').then((response) => {
@@ -31,15 +31,15 @@ function getInputs(){
             inputsDiv.innerHTML= '';
         for (let inputs of serverCalulations) {
             inputsDiv.innerHTML += `
-            <p>${inputs.firstNumberIn}
-               ${symbol.operator}
-               ${inputs.secondNumberIn} =
-               ${inputs.equals}
+            <p>${inputs.firstNumber}
+               ${inputs.symbol}
+               ${inputs.secondNumber} =
+               ${inputs.answer}
              </p>  
             `;
             
         }
-        getView();
+        // getView();
 }).catch((error) => {
     console.log(error);
     alert('Something went wrong.');
@@ -49,43 +49,44 @@ function getInputs(){
 
 
 
-function getView () {
-    axios.get('/view').then((response) => {
-        let viewForServer = response.data.result;
-        let view= document.querySelector('#view');
-        view.innerHTML = viewForServer;
-    }).catch((error) => {
-    console.log(error);
-    alert('Something went wrong.')
-})
+// function getView () {
+//     axios.get('/view').then((response) => {
+//         let viewForServer = response.data.result;
+//         let view= document.querySelector('#view');
+//         view.innerHTML = viewForServer;
+//     }).catch((error) => {
+//     console.log(error);
+//     alert('Something went wrong.')
+// })
 
-};
+// };
 
 function calculate(event) {
-    // event.preventDefault();
-    let firstNumberIn= Number(document.querySelector('#First Number').value);
-    let secondNumberIn = Number(document.querySelector('#Second Number').value);
-        console.log(firstNumberIn, secondNumberIn);
+    event.preventDefault();
+    let firstNumberIn= Number(document.querySelector('#firstNumberIn').value);
+    let secondNumberIn = Number(document.querySelector('#secondNumberIn').value);
+    console.log(firstNumberIn, secondNumberIn);
     // let operator= document.getElementById('symbol').value
 
-        let calculationForServer = {
-            firstNumber : firstNumberIn,
-            symbol : operator,
-            secondNumber : secondNumberIn,
- };
-console.log(calculationForServer);
+    let calculationForServer = {
+        firstNumber : firstNumberIn,
+        symbol : operator,
+        secondNumber : secondNumberIn,
+    };
+    console.log(calculationForServer);
 
-axios.post('/inputs', calculationForServer).then((response) => {
-    console.log(response);
-    // calculate();
-    getInputs();
-    // showInputs();
- }).catch((error) => {
-    console.log(error);
-    alert('Something went wrong.');
-});
-// event.target.reset('/inputs');
+    axios.post('/inputs', calculationForServer).then((response) => {
+        console.log(response);
+        // calculate();
+        getInputs();
+        // showInputs();
+    }).catch((error) => {
+        console.log(error);
+        alert('Something went wrong.');
+    });
+
 }
+
 // function clearAll(event) {
 //     console.log(event.target.value);
 //     operator = event.target.value;
