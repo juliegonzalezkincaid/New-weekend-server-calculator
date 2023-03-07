@@ -16,22 +16,49 @@ app.listen(PORT, () => {
 
 // app.use('/inputs', calculatorRouter);
 // let inputsArray =[];
-let inputs= [];
-let history = [];
+let inputsArray= [];
+let answer =0;
+
 
 app.get('/inputs',(req, res) =>{
       console.log('GET Request made for /inputs');
-      res.send(inputs);
+      res.send(inputsArray);
   });
 
 
 
-app.get('/viewCalculation', (req,res) => {
-  console.log('POST Request made for /inputs');
+app.get('/view', (req,res) => {
+  console.log('GET Request made for /view');
   console.log(req.body);
+  res.send({view});
 });
 
+app.post('/inputs', (req, res) => {
+  console.log('POST Request made for /inputs');
+  console.log(req.body);
+  let inputNew= req.body;
+  let firstNum = Number(inputNew.firstNumberIn);
+  let secNum = Number(inputNew.secondNumberIn)  
+  let symbol = inputNew.operator
 
+  const calculate = (n1, operator, n2) => {
+    let result = ''
+    
+    if (operator === 'add') {
+      result = n1 + n2
+    } else if (operator === 'subtract') {
+      result = n1 - n2
+    } else if (operator === 'multiply') {
+      result = n1 * n2
+    } else if (operator === 'divide') {
+      result = n1 / n2
+    }
+    
+    return result
+  }
+  inputs.push(inputs);
+  res.sendStatus(201);//Sucess!!
+});
 //   function get calculation() {
 //     axios.get('/calculation').then((response) => {
 //         console.log(response);
@@ -52,14 +79,9 @@ app.get('/viewCalculation', (req,res) => {
 //         alert('Something went wrong.');
 //     });
 // }
-app.post('/inputs', (req, res) => {
-  console.log('POST Request made for /inputs');
+
   //Any data we send from the client is available
  //as a property of req.body.
-  console.log(req.body);
-  let inputsArray= req.body;
-  inputs.push(inputs);
-  res.sendStatus(201);//Sucess!!
-});
+  
 
 

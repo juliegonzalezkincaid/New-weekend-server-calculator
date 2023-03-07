@@ -7,9 +7,9 @@ console.log("working");
 let total = 0;
 let firstNumberIn='';
 let secondNumberIn = '';
-let operator= " ";
+let operator= ''
 let symbolValue=" ";
-
+let history = [];
 
 
 
@@ -19,6 +19,73 @@ console.log(event.target.value)
 operator= event.target.value
 };
 
+
+
+
+
+function getInputs(){
+    axios.get('/inputs').then((response) => {
+        console.log(response);
+        let serverCalulations =response.data;
+        let inputsDiv = document.querySelector('#view');
+            inputsDiv.innerHTML= '';
+        for (let inputs of serverCalulations) {
+            inputsDiv.innerHTML += `
+            <p>${inputs.firstNumberIn}
+               ${symbol.operator}
+               ${inputs.secondNumberIn} =
+               ${inputs.equals}
+             </p>  
+            `;
+            
+        }
+        getView();
+}).catch((error) => {
+    console.log(error);
+    alert('Something went wrong.');
+});
+    
+};
+
+
+
+function getView () {
+    axios.get('/view').then((response) => {
+        let viewForServer = response.data.result;
+        let view= document.querySelector('#view');
+        view.innerHTML = viewForServer;
+    }).catch((error) => {
+    console.log(error);
+    alert('Something went wrong.')
+})
+
+};
+
+function calculate(event) {
+    // event.preventDefault();
+    let firstNumberIn= Number(document.querySelector('#First Number').value);
+    let secondNumberIn = Number(document.querySelector('#Second Number').value);
+        console.log(firstNumberIn, secondNumberIn);
+    // let operator= document.getElementById('symbol').value
+
+        let calculationForServer = {
+            firstNumber : firstNumberIn,
+            symbol : operator,
+            secondNumber : secondNumberIn,
+ };
+console.log(calculationForServer);
+
+axios.post('/inputs', calculationForServer).then((response) => {
+    console.log(response);
+    // calculate();
+    getInputs();
+    // showInputs();
+ }).catch((error) => {
+    console.log(error);
+    alert('Something went wrong.');
+});
+// event.target.reset('/inputs');
+}
 // function clearAll(event) {
 //     console.log(event.target.value);
 //     operator = event.target.value;
@@ -32,81 +99,12 @@ operator= event.target.value
 // let buttons = document.querySelector('#button').class;
 //     console.log(buttons)
 // getInputs();
-function equals(event) {
-    // event.preventDefault();
-
-let firstNumberIn= document.querySelector('#First Number').value;
-    console.log(firstNumberIn);
-let secondNumberIn = document.querySelector('#Second Number').value;
-    console.log(secondNumberIn);
-    console.log(firstNumberIn, secondNumberIn);
-    
-let calculationForServer = {
-      firstNumber : firstNumberIn,
-      symbol : operator,
-      secondNumber : secondNumberIn,
- };
-console.log(calculationForServer);
-
-axios.post('/calculationForServer', calculationForServer).then((response) => {
-    console.log(response);
-    // calculate();
-    getInputs();
-    showInputs();
- }).catch((error) => {
-    console.log(error);
-    alert('Something went wrong.');
-});
-event.target.reset('/inputs');
-}
-
-
-function getInputs(){
-    axios.get('/calculationsForServer').then((response) => {
-        console.log(response);
-        let serverCalulations =response.data;
-        let inputsDiv = document.querySelector('#viewCalculation');
-            inputsDiv.innerHTML= '';
-        for (let inputs of serverCalulations) {
-            inputsDiv.innerHTML += `
-            <p>${inputs.firstNumber}
-               ${inputs.symbol}
-               ${inputs.secondNumber} =
-               ${inputs.equals}
-             </p>  
-            `
-            
-        }
-        getviewCalculation();
-}).catch((error) => {
-    console.log(error);
-    alert('Something went wrong.');
-});
-    
-};
-
-
-
-function getviewCalculation () {
-    axios.get('/viewCalculation').then((response) => {
-        let viewCalculationForServer = response.data.result;
-        let viewcalculationDiv = document.querySelector('#viewCalculation');
-        viewcalculationDiv.innerHTML = viewCalculationForServer;
-    }).catch((error) => {
-    console.log(error);
-    alert('Something went wrong.')
-})
-
-};
-
 // function history(){
 //     console.log( 'in history' );
     // axios call to server to get koalas
    
 //   }
   
-  
-
 
 //  let inputs = document.querySelector('#input');
 // inputs.innerHTML ='';   
